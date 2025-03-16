@@ -8,3 +8,11 @@ class led_data:
         self.current = current # Forward Current
         self.voltage = voltage_supply # Supply voltage
 
+def intro():
+    """Introduction outputed to user"""
+    print("Welcome to Manav's resistor quiz program, this program will require you to"
+          "\ncalculate the recommended resistor for a variety of LED's in a series circuit")
+
+
+
+intro()
