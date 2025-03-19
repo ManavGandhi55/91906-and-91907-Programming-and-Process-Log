@@ -1,29 +1,43 @@
 """Resistor quiz program, using the formula (Vs-Vf)/If, program made for year 10/11 students """
 
-class Quiz:
-    # Stored data about each single LED
+class LED:
+# LED class, gathers/stores LED data
+    def __init__(self, filename):
+        self.led_list = self.load_led_data(filename)
 
-    def __init__(self):
+    def load_led_data(self, filename):
+        with open(filename, "r") as file:
+            data = file.read().splitlines()
+        return [{"Vf": float(data[i]), "If": int(data[i+1])} for i in range(0, len(data), 2)]
+
+
+class Quiz:
+
+# Stored data about each single LED
+
+    def __init__(self, led_data):
         self.voltage_forward = 0 # Forward voltage
         self.current = 0 # Forward Current
         self.voltage_supply = 0 # Supply voltage
         self.resistance = 0
-        self.data = [] # data
+        self.led_data = led_data # data
 
     def intro(self):
         # Introduction outputed to user
         print("Welcome to Manav's resistor quiz program, this program will require you to"
               "\ncalculate the recommended resistor for a variety of LED's in a series circuit")
 
-    def get_data(self):
-        # Opens the file
-        self.data = open(r"data.txt").split()
+    def select_led(self):
+        led = self.led_data[0]
+        self.voltage_forward = led["Vf"]
+        self.current = led["If"]
+        print(f'voltage forward: {self.voltage_forward}, forward current: {self.current}')
 
 
     def inputs(self):
         # Gathers the inputs from the user
         self.voltage_supply = int(input("What voltage out of 3V or 5V would you like to pick?"))
-        if self.voltage_supply is 3 or 5:
+        if self.voltage_supply == 3 or 5:
             self.resistance = int(input("What is the resistance"))
         else:
             print("That is not 3V or 5V, please lock in")
@@ -35,10 +49,18 @@ class Quiz:
         # Calculates resistance of the given question
         self.current = self.current / 1000 # Calculates the current in amps, not milliamps
         self.resistance = (self.voltage_supply - self.voltage_forward) / self.current
+        print(f'Resistance Calculated: {self.resistance}')
 
+    def start(self):
+    # start function
+        self.intro()
+        self.select_led()
+        self.inputs()
+        self.calculate_resistance()
 
+# Load LED Data
+led_data = LED("data.txt").led_list
 
-
-
-
-intro()
+# Start the Quiz
+quiz = Quiz(led_data)
+quiz.start()
