@@ -30,8 +30,10 @@ class Quiz:
         print("Welcome to Manav's resistor quiz program, this program will require you to"
               "\ncalculate the recommended resistor for a variety of LED's in a series circuit")
 
-    def select_led(self):
-        led = self.led_data[0]
+
+    def select_led(self, index):
+        # This function sets the led
+        led = self.led_data[index]
         self.voltage_forward = led["Vf"]
         self.current = led["If"]
         print(f'voltage forward: {self.voltage_forward}, forward current: {self.current}')
@@ -40,11 +42,11 @@ class Quiz:
     def inputs(self):
         # Gathers the inputs from the user
         self.voltage_supply = int(input("What voltage out of 3V or 5V would you like to pick?"))
-        if self.voltage_supply == 3 or 5:
+        if self.voltage_supply == 3 or self.voltage_supply == 5:
             self.resistance_guess = int(input("What is the resistance "))
         else:
             print("That is not 3V or 5V, please lock in")
-            self.voltage_supply = int(input("What voltage out of 3V or 5V would you like to pick? "))
+            self.inputs()
 
 
     def calculate_resistance(self):
@@ -63,10 +65,12 @@ class Quiz:
     def start(self):
     # start function
         self.intro()
-        self.select_led()
-        self.inputs()
-        self.calculate_resistance()
-        self.output()
+        for index in range(len(self.led_data)):
+            self.select_led(index)
+            self.inputs()
+            self.calculate_resistance()
+            self.output()
+        print("Thank you for running my resistor program, I hope you are now skilled enough to ace your test")
 
 # Load LED Data
 led_data = LED("data.txt").led_list
