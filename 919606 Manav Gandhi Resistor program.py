@@ -29,6 +29,29 @@ class Quiz:
         # Introduction outputed to user
         print("Welcome to Manav's resistor quiz program, this program will require you to"
               "\ncalculate the recommended resistor for a variety of LED's in a series circuit")
+        text = input("Would you like some guidelines?(Yes/No)")
+        if text.lower == "yes":
+            self.guidelines()
+            self.loop()
+        elif text.lower == "no":
+            self.loop()
+        else:
+            print(f"If you are indecisive you get the guidelines{self.guidelines()} ")
+
+    def guidelines(self):
+        # Provides guidelines to the user on how the quiz works\
+        index = 0
+        self.select_led(index)
+        self.voltage_input()
+        print(f"The Supply voltage is {self.voltage_supply} \nThe forward voltage is {self.voltage_forward}"
+              f"\nThe forward current is {self.current}")
+
+        print("These peices of data are used to find the reccommend resistor in a series circuit(ie; for a jackbord)"
+              "\nThe formula required for this calculation is Ohm's Law, allowing you to calculate the resistance."
+              "\nA quick tip is that current(I) is measured in amps, the data you recieve for forward current"
+              "\nis in milliamps. To find the current in amps divide the current given by 1000."
+              "\n\nSo the formula requried to find the resistance is""\n Resistance = (Vs - Vf) ÷ (If ÷ 1000)")
+
 
 
     def select_led(self, index):
@@ -39,14 +62,14 @@ class Quiz:
         print(f'voltage forward: {self.voltage_forward}, forward current: {self.current}')
 
 
-    def inputs(self):
+    def voltage_input(self):
         # Gathers the inputs from the user
-        self.voltage_supply = int(input("What voltage out of 3V or 5V would you like to pick?"))
+        self.voltage_supply = int(input("What supply voltage out of 3V or 5V would you like to pick?"))
         if self.voltage_supply == 3 or self.voltage_supply == 5:
             self.resistance_guess = int(input("What is the resistance "))
         else:
             print("That is not 3V or 5V, please lock in")
-            self.inputs()
+            self.voltage_input()
 
 
     def calculate_resistance(self):
@@ -65,9 +88,12 @@ class Quiz:
     def start(self):
     # start function
         self.intro()
+
+    def loop(self):
+        # loops the function
         for index in range(len(self.led_data)):
             self.select_led(index)
-            self.inputs()
+            self.voltage_input()
             self.calculate_resistance()
             self.output()
         print("Thank you for running my resistor program, I hope you are now skilled enough to ace your test")
