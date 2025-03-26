@@ -9,7 +9,7 @@ class LED:
 # LED class, gathers/stores LED data
     def __init__(self, filename):
         self.led_list = self.load_led_data(filename)
-        print(f'{self.led_list}')
+        # print(f'{self.led_list}')
 
     def load_led_data(self, filename):
         with open(filename, "r") as file:
@@ -32,7 +32,6 @@ class Quiz:
         self.led_data = led_data # data
 
     def clear(self):
-        input("Press Enter to continue...")  # Allows user to see output before clearing
         os.system('cls' if os.name == 'nt' else 'clear')
 
     def pause(self):
@@ -59,6 +58,7 @@ class Quiz:
 
     def guidelines(self):
         # Provides guidelines to the user on how the quiz works\
+        index = 0
         self.clear()
         self.select_led(index)
         self.voltage_supply = int(input("What supply voltage out of 3V or 5V would you like to pick?"))
@@ -80,13 +80,13 @@ class Quiz:
 
 
             print(f'First of all we should divide the current by 1000 in order to find the current in amps'
-                  f'\n{self.current} / 1000 = {self.current_amps}'
+                  f'\n{self.current} / 1000 = {self.current_amps}A'
                   f'\n\nNext wee need to add the supply voltage, forward voltage, and current into our previous equation'
                   f'\nResistance = {self.voltage_supply} - {self.voltage_forward} / {self.current_amps}'
-                  f'\nResitance = {self.resistance_calculate}'
+                  f'\nResitance = {self.resistance_calculate}Ω'
                   f'\n\nWe will want the resistance to be rounded to 2 decimal places, altough values with <(2d.p.)'
                   f'\ndo not need to be rounded'
-                  f'\n\nThus the resistance found is {self.resistance_calculate}ohms')
+                  f'\n\nThus the resistance found is {self.resistance_calculate}Ω')
             self.pause()
         else:
             print("That is not 3V or 5V, please lock in")
@@ -102,7 +102,7 @@ class Quiz:
         led = self.led_data[index]
         self.voltage_forward = led["Vf"]
         self.current = led["If"]
-        print(f'voltage forward: {self.voltage_forward}, forward current: {self.current}')
+        print(f'voltage forward: {self.voltage_forward}V, forward current: {self.current}A')
 
 
     def voltage_input(self):
@@ -119,14 +119,14 @@ class Quiz:
         # Calculates resistance of the given question
         self.current_amps = self.current / 1000 # Calculates the current in amps, not milliamps
         self.resistance_calculate = (self.voltage_supply - self.voltage_forward) / self.current_amps
-        print(f'Resistance Calculated: {self.resistance_calculate}')
+        print(f'Resistance Calculated: {self.resistance_calculate}Ω')
 
     def output(self):
         # provides the basic outputs
         if self.resistance_guess == self.resistance_calculate:
-            print(f'You are correct, the resistance is in fact {self.resistance_calculate}')
+            print(f'You are correct, the resistance is in fact {self.resistance_calculate}Ω')
         else:
-            print(f'You are incorrect, the resistance is in fact {self.resistance_calculate}')
+            print(f'You are incorrect, the resistance is in fact {self.resistance_calculate}Ω')
 
         self.pause()
         self.clear()
