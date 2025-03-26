@@ -44,24 +44,31 @@ class Quiz:
         # Provides guidelines to the user on how the quiz works\
         index = 0
         self.select_led(index)
-        self.voltage_input()
-        print(f"The Supply voltage is {self.voltage_supply}V \nThe forward voltage is {self.voltage_forward}V"
-              f"\nThe forward current is {self.current}mA")
+        self.voltage_supply = int(input("What supply voltage out of 3V or 5V would you like to pick?"))
+        if self.voltage_supply == 3 or self.voltage_supply == 5:
+            self.calculate_resistance()
+            print(f"The Supply voltage is {self.voltage_supply}V \nThe forward voltage is {self.voltage_forward}V"
+                  f"\nThe forward current is {self.current}mA")
 
-        print("These peices of data are used to find the reccommend resistor in a series circuit(ie; for a jackbord)"
-              "\nThe formula required for this calculation is Ohm's Law, allowing you to calculate the resistance."
-              "\nA quick tip is that current(I) is measured in amps, the data you recieve for forward current"
-              "\nis in milliamps. To find the current in amps divide the current given by 1000."
-              "\n\nSo the formula requried to find the resistance is""\n Resistance = (Vs - Vf) ÷ (If ÷ 1000)")
+            print(
+                "These peices of data are used to find the reccommend resistor in a series circuit(ie; for a jackbord)"
+                "\nThe formula required for this calculation is Ohm's Law, allowing you to calculate the resistance."
+                "\nA quick tip is that current(I) is measured in amps, the data you recieve for forward current"
+                "\nis in milliamps. To find the current in amps divide the current given by 1000."
+                "\n\nSo the formula requried to find the resistance is""\nResistance = (Vs - Vf) ÷ (If ÷ 1000)"
+            )
 
-        print(f'First of all we should divide the current by 1000 in order to find the current in amps'
-              f'\n{self.current} / 1000 = {self.current_amps}'
-              f'\n\nNext wee need to add the supply voltage, forward voltage, and current into our previous equation'
-              f'\nResistance = {self.voltage_supply} - {self.voltage_forward} / {self.current_amps}'
-              f'\nResitance = {self.resistance_calculate}'
-              f'\n\nWe will want the resistance to be rounded to 2 decimal places, altough values with >(2d.p.)'
-              f'\ndo not need to be rounded'
-              f'\n\nThus the resistance found is {self.resistance_calculate}ohms')
+            print(f'First of all we should divide the current by 1000 in order to find the current in amps'
+                  f'\n{self.current} / 1000 = {self.current_amps}'
+                  f'\n\nNext wee need to add the supply voltage, forward voltage, and current into our previous equation'
+                  f'\nResistance = {self.voltage_supply} - {self.voltage_forward} / {self.current_amps}'
+                  f'\nResitance = {self.resistance_calculate}'
+                  f'\n\nWe will want the resistance to be rounded to 2 decimal places, altough values with <(2d.p.)'
+                  f'\ndo not need to be rounded'
+                  f'\n\nThus the resistance found is {self.resistance_calculate}ohms')
+
+        else:
+            print("That is not 3V or 5V, please lock in")
         enter = input("Press enter to continue")
         if enter == enter:
             self.loop()
