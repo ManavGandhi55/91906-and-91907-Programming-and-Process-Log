@@ -1,4 +1,9 @@
 """Resistor quiz program, using the formula (Vs-Vf)/If, program made for year 10/11 students """
+import os # imports the os module for Python
+import time # imports the time module for Python
+
+
+
 
 class LED:
 # LED class, gathers/stores LED data
@@ -26,18 +31,30 @@ class Quiz:
         self.resistance_calculate = 0 # the R value the code guesses
         self.led_data = led_data # data
 
+    def clear(self):
+        input("Press Enter to continue...")  # Allows user to see output before clearing
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+    def pause(self):
+        time.sleep(2)
+
     def intro(self):
         # Introduction outputed to user
         print("Welcome to Manav's resistor quiz program, this program will require you to"
               "\ncalculate the recommended resistor for a variety of LED's in a series circuit")
+        self.pause()
         text = input("Would you like some guidelines?(Yes/No)")
         if text.lower() == "yes":
             self.guidelines()
         elif text.lower() == "no":
             print("Here comes the quiz!")
+            self.pause()
+            self.clear()
             self.loop()
         else:
             print(f"If you are indecisive you won't get the guidelines")
+            self.pause()
+            self.clear()
             self.loop()
 
     def guidelines(self):
@@ -50,6 +67,8 @@ class Quiz:
             print(f"The Supply voltage is {self.voltage_supply}V \nThe forward voltage is {self.voltage_forward}V"
                   f"\nThe forward current is {self.current}mA")
 
+            self.pause()
+
             print(
                 "These peices of data are used to find the reccommend resistor in a series circuit(ie; for a jackbord)"
                 "\nThe formula required for this calculation is Ohm's Law, allowing you to calculate the resistance."
@@ -57,6 +76,8 @@ class Quiz:
                 "\nis in milliamps. To find the current in amps divide the current given by 1000."
                 "\n\nSo the formula requried to find the resistance is""\nResistance = (Vs - Vf) ÷ (If ÷ 1000)"
             )
+            self.pause()
+
 
             print(f'First of all we should divide the current by 1000 in order to find the current in amps'
                   f'\n{self.current} / 1000 = {self.current_amps}'
@@ -66,11 +87,12 @@ class Quiz:
                   f'\n\nWe will want the resistance to be rounded to 2 decimal places, altough values with <(2d.p.)'
                   f'\ndo not need to be rounded'
                   f'\n\nThus the resistance found is {self.resistance_calculate}ohms')
-
+            self.pause()
         else:
             print("That is not 3V or 5V, please lock in")
         enter = input("Press enter to continue")
         if enter == enter:
+            self.clear()
             self.loop()
 
 
@@ -105,6 +127,9 @@ class Quiz:
             print(f'You are correct, the resistance is in fact {self.resistance_calculate}')
         else:
             print(f'You are incorrect, the resistance is in fact {self.resistance_calculate}')
+
+        self.pause()
+        self.clear()
 
     def start(self):
     # start function
