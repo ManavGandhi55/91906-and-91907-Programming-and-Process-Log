@@ -59,7 +59,7 @@ class Quiz:
 
     def guidelines(self):
         # Provides guidelines to the user on how the quiz works\
-        index = 0
+        self.clear()
         self.select_led(index)
         self.voltage_supply = int(input("What supply voltage out of 3V or 5V would you like to pick?"))
         if self.voltage_supply == 3 or self.voltage_supply == 5:
