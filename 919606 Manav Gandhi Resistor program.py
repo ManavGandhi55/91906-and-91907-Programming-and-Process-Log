@@ -1,8 +1,7 @@
 """Resistor quiz program, using the formula (Vs-Vf)/If, program made for year 10/11 students """
 import os # imports the os module for Python
 import time # imports the time module for Python
-
-
+from operator import truediv
 
 
 class LED:
@@ -64,23 +63,9 @@ class Quiz:
         index = 0
         self.clear()
         self.select_led(index)
-        while True:
-            try:
-                self.voltage_supply = input("What supply voltage out of 3V or 5V would you like to pick?")
-
-                if self.voltage_supply in self.vs3_list:
-                    self.voltage_supply = 3
-                    break
-                elif self.voltage_supply in self.vs5_list:
-                    self.voltage_supply = 5
-                    break
-                else:
-                    print("That is not 3V or 5V, please lock in")
-            except ValueError:
-                print("Invailid input, please lock in")
-
+        self.voltage_input()
         self.calculate_resistance()
-        print(f"The Supply voltage is {self.voltage_supply}V \nThe forward voltage is {self.voltage_forward}V"
+        print(f"\nThe Supply voltage is {self.voltage_supply}V \nThe forward voltage is {self.voltage_forward}V"
               f"\nThe forward current is {self.current}mA")
 
         self.pause()
@@ -100,8 +85,8 @@ class Quiz:
               f'\n\nNext wee need to add the supply voltage, forward voltage, and current into our previous equation'
               f'\nResistance = {self.voltage_supply} - {self.voltage_forward} / {self.current_amps}'
               f'\nResitance = {self.resistance_calculate}Ω'
-              f'\n\nWe will want the resistance to be rounded to 2 decimal places, altough values with <(2d.p.)'
-              f'\ndo not need to be rounded'
+              f'\n\nWe will want the resistance to be rounded to 1 decimal point, if its a whole number'
+              f'\nyou do not need a decimal point'
               f'\n\nThus the resistance found is {self.resistance_calculate}Ω')
         self.pause()
 
@@ -117,7 +102,6 @@ class Quiz:
         led = self.led_data[index]
         self.voltage_forward = led["Vf"]
         self.current = led["If"]
-        print(f'voltage forward: {self.voltage_forward}V, forward current: {self.current}A')
 
 
     def voltage_input(self):
@@ -125,10 +109,13 @@ class Quiz:
         while True:
             try:
                 self.voltage_supply = input("What supply voltage out of 3V or 5V would you like to pick?")
-
                 if self.voltage_supply in self.vs3_list:
                     self.voltage_supply = 3
-                    break
+                    if self.voltage_forward >= self.voltage_supply:
+                        self.voltage_supply = input("That wouldn't work as the forward voltage would be larger than"
+                                                    "\nthe supply voltage, You should use a 5V supply: ")
+                    else:
+                        break
                 elif self.voltage_supply in self.vs5_list:
                     self.voltage_supply = 5
                     break
@@ -137,12 +124,34 @@ class Quiz:
             except ValueError:
                 print("Invailid input, please lock in")
 
-        self.resistance_guess = int(input("What is the resistance "))
+
+
+    def resistance(self):
+        print(f'\nVoltage Supply: {self.voltage_supply}V'
+              f'\nVoltage Forward: {self.voltage_forward}V'
+              f'\nForward Current: {self.current}mA\n')
+        while True:  # Keep looping until valid input is given
+            try:
+                self.resistance_guess = input("What is the resistance? (Make sure you round to 1 d.p.) ")
+
+                # Convert input to float and check if it has at most 1 decimal place
+                if "." in self.resistance_guess and len(self.resistance_guess.split(".")[1]) > 1:
+                    print("Invalid input. Please round to 1 decimal place.")
+                    continue  # Ask again
+
+                # Convert to float (or int if no decimal point)
+                self.resistance_guess = float(self.resistance_guess)
+
+                break  # Valid input, exit loop
+            except ValueError:
+                print("Invalid input. Please enter a number, rounded to 1 decimal place.")
 
     def calculate_resistance(self):
         # Calculates resistance of the given question
         self.current_amps = self.current / 1000 # Calculates the current in amps, not milliamps
-        self.resistance_calculate = (self.voltage_supply - self.voltage_forward) / self.current_amps
+        self.resistance_calculate = round((self.voltage_supply - self.voltage_forward) / self.current_amps, 1)
+        print(self.voltage_supply)
+        print(self.voltage_forward)
         print(f'Resistance Calculated: {self.resistance_calculate}Ω')
 
     def output(self):
@@ -164,6 +173,7 @@ class Quiz:
         for index in range(len(self.led_data)):
             self.select_led(index)
             self.voltage_input()
+            self.resistance()
             self.calculate_resistance()
             self.output()
         print("Thank you for running my resistor program, I hope you are now skilled enough to ace your test")

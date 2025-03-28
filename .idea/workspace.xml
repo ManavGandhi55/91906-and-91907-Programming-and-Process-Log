@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52db5584-bcfa-4e2b-a92a-41b547cfc030" name="Changes" comment="Guidlines functions pretty much done" />
+    <list default="true" id="52db5584-bcfa-4e2b-a92a-41b547cfc030" name="Changes" comment="Add boundrary code, using vs3 list and vs5 list, and try except.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/919606 Manav Gandhi Resistor program.py" beforeDir="false" afterPath="$PROJECT_DIR$/919606 Manav Gandhi Resistor program.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,6 +69,30 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Manav_gandhi\PycharmProjects\919606 complex program (resistors)" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="919606 Manav Gandhi Resistor program" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="919606 complex program (resistors)" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/919606 Manav Gandhi Resistor program.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -155,7 +182,47 @@
       <option name="project" value="LOCAL" />
       <updated>1742862954984</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Guidelines 95% done">
+      <option name="closed" value="true" />
+      <created>1743028313479</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1743028313479</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added os clear and time delay clear function not working right now">
+      <option name="closed" value="true" />
+      <created>1743028379885</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1743028379885</updated>
+    </task>
+    <task id="LOCAL-00012" summary="clear function works now as I allowed for emulate terminal in output console">
+      <option name="closed" value="true" />
+      <created>1743028535262</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1743028535262</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added units everywhere in the program(ohms symbol, volts, and amps)">
+      <option name="closed" value="true" />
+      <created>1743029716273</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1743029716273</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add boundrary code, using vs3 list and vs5 list, and try except.">
+      <option name="closed" value="true" />
+      <created>1743029879049</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1743029879049</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -177,6 +244,11 @@
     <MESSAGE value="I created a little bit of code which loops the program for the length of the LED data list, then when its finished it will end the porgram" />
     <MESSAGE value="Created a loop function, starting on the guidlines function aswell." />
     <MESSAGE value="Guidlines functions pretty much done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Guidlines functions pretty much done" />
+    <MESSAGE value="Guidelines 95% done" />
+    <MESSAGE value="Added os clear and time delay clear function not working right now" />
+    <MESSAGE value="clear function works now as I allowed for emulate terminal in output console" />
+    <MESSAGE value="Added units everywhere in the program(ohms symbol, volts, and amps)" />
+    <MESSAGE value="Add boundrary code, using vs3 list and vs5 list, and try except." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add boundrary code, using vs3 list and vs5 list, and try except." />
   </component>
 </project>
