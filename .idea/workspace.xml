@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52db5584-bcfa-4e2b-a92a-41b547cfc030" name="Changes" comment="Add boundrary code, using vs3 list and vs5 list, and try except.">
+    <list default="true" id="52db5584-bcfa-4e2b-a92a-41b547cfc030" name="Changes" comment="commit 15 I reformated code, where resistance guess has its own function, got rid of the 3 or 5V try except in voltage_input, added a nicer output for the Vs Vf and If. Boundrary created for resistance guess. And if Vf &gt; Vs then it will ask them for an input again">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/919606 Manav Gandhi Resistor program.py" beforeDir="false" afterPath="$PROJECT_DIR$/919606 Manav Gandhi Resistor program.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743029879049</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="commit 15 I reformated code, where resistance guess has its own function, got rid of the 3 or 5V try except in voltage_input, added a nicer output for the Vs Vf and If. Boundrary created for resistance guess. And if Vf &gt; Vs then it will ask them for an input again">
+      <option name="closed" value="true" />
+      <created>1743127933128</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1743127933128</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -249,6 +256,7 @@
     <MESSAGE value="clear function works now as I allowed for emulate terminal in output console" />
     <MESSAGE value="Added units everywhere in the program(ohms symbol, volts, and amps)" />
     <MESSAGE value="Add boundrary code, using vs3 list and vs5 list, and try except." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add boundrary code, using vs3 list and vs5 list, and try except." />
+    <MESSAGE value="commit 15 I reformated code, where resistance guess has its own function, got rid of the 3 or 5V try except in voltage_input, added a nicer output for the Vs Vf and If. Boundrary created for resistance guess. And if Vf &gt; Vs then it will ask them for an input again" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 15 I reformated code, where resistance guess has its own function, got rid of the 3 or 5V try except in voltage_input, added a nicer output for the Vs Vf and If. Boundrary created for resistance guess. And if Vf &gt; Vs then it will ask them for an input again" />
   </component>
 </project>
