@@ -1,13 +1,14 @@
 """Resistor quiz program, using the formula (Vs-Vf)/If, program made for year 10/11 students """
 import os # imports the os module for Python
 import time # imports the time module for Python
-from operator import truediv
+import random # imports random module for Python
 
 
 class LED:
 # LED class, gathers/stores LED data
     def __init__(self, filename):
         self.led_list = self.load_led_data(filename)
+        random.shuffle(self.led_list)
         # print(f'{self.led_list}')
 
     def load_led_data(self, filename):
@@ -103,6 +104,7 @@ class Quiz:
         enter = input("Press enter to continue")
         if enter == enter:
             self.clear()
+            del self.led_data[index]
             self.loop()
 
     def help_function(self):
@@ -118,7 +120,7 @@ class Quiz:
               f"\n\n{self.current} / 1000 = {self.current_amps}A.")
         self.pause_medium()
 
-        print(f"\nNow all we got to do is substitue the values into the equation given"
+        print(f"\nStep 3: Now all we got to do is substitue the values into the equation given"
               f"\n\n({self.voltage_supply} - {self.voltage_forward}) / {self.current_amps} = "
               f"{self.resistance_calculate}\nThus the resistance is {self.resistance_calculate}Ω")
         self.pause_medium()
@@ -129,6 +131,7 @@ class Quiz:
 
     def select_led(self, index):
         # This function sets the led
+        # random.shuffle(self.led_data)
         led = self.led_data[index]
         self.voltage_forward = led["Vf"]
         self.current = led["If"]
@@ -136,24 +139,29 @@ class Quiz:
 
     def voltage_input(self):
         # Gathers the inputs from the user
-        print(f'Voltage Forward: {self.voltage_forward}V'
-              f'\nForward Current: {self.current}mA\n')
+        print(f'\nThe Forward Voltage is: {self.voltage_forward}V'
+              f'\nThe Forward Current is : {self.current}mA\n')
         while True:
             try:
-                self.voltage_supply = input("What supply voltage out of 3V or 5V would you like to pick?")
-                if self.voltage_supply in self.vs3_list:
+                guess = input("What supply voltage out of 3V or 5V would you like to pick?").strip()
+
+                if guess in self.vs3_list:
                     self.voltage_supply = 3
+
                     if self.voltage_forward >= self.voltage_supply:
-                        self.voltage_supply = input("That wouldn't work as the forward voltage would be larger than"
-                                                    "\nthe supply voltage, You should use a 5V supply: ")
-                        self.pause_quick()
+                        print(f"That wouldn't work, as {self.voltage_forward}V is larger than {self.voltage_supply}V ,"
+                              f"So you should instead use a supply voltage of {self.vs5_list[1]}: ")
+                        continue
                     else:
                         break
-                elif self.voltage_supply in self.vs5_list:
+
+                elif guess in self.vs5_list:
                     self.voltage_supply = 5
                     break
+
                 else:
                     print("That is not 3V or 5V, please lock in")
+
             except ValueError:
                 print("Invailid input, please lock in")
                 self.pause_quick()
@@ -186,10 +194,11 @@ class Quiz:
     def calculate_resistance(self):
         # Calculates resistance of the given question
         self.current_amps = self.current / 1000 # Calculates the current in amps, not milliamps
-        self.resistance_calculate = round((self.voltage_supply - self.voltage_forward) / self.current_amps, 1)
-        print(self.voltage_supply)
-        print(self.voltage_forward)
-        print(f'Resistance Calculated: {self.resistance_calculate}Ω')
+        self.resistance_calculate = round((float(self.voltage_supply) - float(self.voltage_forward))
+                                          / self.current_amps, 1)
+        # print(self.voltage_supply)
+        # print(self.voltage_forward)
+        # print(f'Resistance Calculated: {self.resistance_calculate}Ω')
 
     def output(self):
         # provides the basic outputs
@@ -217,6 +226,7 @@ class Quiz:
 
     def loop(self):
         # loops the function
+
         for index in range(len(self.led_data)):
             self.select_led(index)
             self.question += 1
