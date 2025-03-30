@@ -30,9 +30,11 @@ class Quiz:
         self.resistance_calculate = 0 # the R value the code guesses
         self.question = 0
         self.score = 0
+        self.help = 0
         self.led_data = led_data # data
         self.vs3_list = ['3', '3V']
         self.vs5_list = ['5', '5V']
+
 
     def clear(self):
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -103,7 +105,27 @@ class Quiz:
             self.clear()
             self.loop()
 
+    def help_function(self):
 
+        print(f"Step 1: First of all we need to recognize the variables"
+              f"\n\nThe Supply Voltage is: {self.voltage_supply}V"
+              f"\nThe Forward Voltage is: {self.voltage_forward}V"
+              f"\nThe Forward Current is: {self.current}mA")
+        self.pause_medium()
+
+        print(f"\nStep 2: We will need to convert the forward current into standard form(mA to A)"
+              f"\nThis is possible by dividing the milliamps value by 1000"
+              f"\n\n{self.current} / 1000 = {self.current_amps}A.")
+        self.pause_medium()
+
+        print(f"\nNow all we got to do is substitue the values into the equation given"
+              f"\n\n({self.voltage_supply} - {self.voltage_forward}) / {self.current_amps} = "
+              f"{self.resistance_calculate}\nThus the resistance is {self.resistance_calculate}Ω")
+        self.pause_medium()
+        enter = input("Press enter to continue")
+        if enter == enter:
+            self.clear()
+            return
 
     def select_led(self, index):
         # This function sets the led
@@ -179,9 +201,15 @@ class Quiz:
         else:
             print(f'You are incorrect, the resistance for question {self.question} is {self.resistance_calculate}Ω'
                   f'\nYou have got {self.score} questions out of {self.question} correct so far.')
-
         self.pause_medium()
+        self.help = input("Type help for the worked answer: ")
         self.clear()
+        if self.help.lower() == "help":
+            self.help_function()
+        else:
+            return
+
+
 
     def start(self):
     # start function
