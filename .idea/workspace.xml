@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52db5584-bcfa-4e2b-a92a-41b547cfc030" name="Changes" comment="commit 15 I reformated code, where resistance guess has its own function, got rid of the 3 or 5V try except in voltage_input, added a nicer output for the Vs Vf and If. Boundrary created for resistance guess. And if Vf &gt; Vs then it will ask them for an input again">
+    <list default="true" id="52db5584-bcfa-4e2b-a92a-41b547cfc030" name="Changes" comment="commit 19 accepts 3.0 or 5.0 for Vs, aswell as adding the V symbol in the function, so 3 3.0 or 3V or 3.0V.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/919606 Manav Gandhi Resistor program.py" beforeDir="false" afterPath="$PROJECT_DIR$/919606 Manav Gandhi Resistor program.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,7 +230,31 @@
       <option name="project" value="LOCAL" />
       <updated>1743127933128</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="commit 16 Added a score function, added a question function, added more time delay functions">
+      <option name="closed" value="true" />
+      <created>1743368993933</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1743368993933</updated>
+    </task>
+    <task id="LOCAL-00017" summary="commit 17 Added a help function,">
+      <option name="closed" value="true" />
+      <created>1743369122370</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1743369122370</updated>
+    </task>
+    <task id="LOCAL-00018" summary="commit 18 Random shuffle/Deleting led from list after use/fixing bug when Vf&gt;Vs">
+      <option name="closed" value="true" />
+      <created>1743369179969</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1743369179969</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -257,6 +282,9 @@
     <MESSAGE value="Added units everywhere in the program(ohms symbol, volts, and amps)" />
     <MESSAGE value="Add boundrary code, using vs3 list and vs5 list, and try except." />
     <MESSAGE value="commit 15 I reformated code, where resistance guess has its own function, got rid of the 3 or 5V try except in voltage_input, added a nicer output for the Vs Vf and If. Boundrary created for resistance guess. And if Vf &gt; Vs then it will ask them for an input again" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit 15 I reformated code, where resistance guess has its own function, got rid of the 3 or 5V try except in voltage_input, added a nicer output for the Vs Vf and If. Boundrary created for resistance guess. And if Vf &gt; Vs then it will ask them for an input again" />
+    <MESSAGE value="commit 16 Added a score function, added a question function, added more time delay functions" />
+    <MESSAGE value="commit 17 Added a help function," />
+    <MESSAGE value="commit 18 Random shuffle/Deleting led from list after use/fixing bug when Vf&gt;Vs" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 18 Random shuffle/Deleting led from list after use/fixing bug when Vf&gt;Vs" />
   </component>
 </project>
