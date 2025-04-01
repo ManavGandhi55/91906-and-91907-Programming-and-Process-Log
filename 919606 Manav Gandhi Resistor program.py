@@ -175,6 +175,7 @@ class Quiz:
         # self.pause_quick()
         while True:  # Keep looping until valid input is given
             try:
+
                 self.resistance_guess = input("What is the resistance? (Make sure you round to 1 d.p.) ")
 
                 # Convert input to float and check if it has at most 1 decimal place
@@ -198,7 +199,7 @@ class Quiz:
                                           / self.current_amps, 1)
         # print(self.voltage_supply)
         # print(self.voltage_forward)
-        # print(f'Resistance Calculated: {self.resistance_calculate}Ω')
+        print(f'Resistance Calculated: {self.resistance_calculate}Ω')
 
     def output(self):
         # provides the basic outputs
@@ -218,7 +219,7 @@ class Quiz:
         else:
             return
 
-    '''def grade_boundaries(self):
+    def grade_boundaries(self):
         # percentage = (self.score / self.question) * 100
         if self.score < (self.question / 2):
             self.grade = "Not Achieved"
@@ -235,7 +236,7 @@ class Quiz:
                         self.grade = "Excellence"
 
                     else:
-                        pass'''
+                        pass
 
 
 
