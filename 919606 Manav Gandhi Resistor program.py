@@ -2,7 +2,7 @@
 import os # imports the os module for Python
 import time # imports the time module for Python
 import random # imports random module for Pythonn
-from termcolor import colored # imports colored module for python
+# from termcolor import colored # imports colored module for python
 
 
 class LED:
@@ -37,9 +37,10 @@ class Quiz:
         self.led_data = led_data # data
         self.vs3_list = ['3','3.0']
         self.vs5_list = ['5','5.0']
-        self.green = "green"
-        self.yellow = "yellow"
-        self.red = "red"
+        self.green = "\033[32m"
+        self.yellow = "\033[33m"
+        self.red = "\033[31m"
+        self.reset = "\033[0m"
 
 
 
@@ -217,12 +218,12 @@ class Quiz:
                 if guess in valid_3:
                     self.voltage_supply = 3
                     if self.voltage_forward > self.voltage_supply:
-                        print(colored(f"\n❌  Oops! {self.voltage_forward}V is greater than {self.voltage_supply}V."
-                              f"\n🔄 Try again with a 5V supply instead.\n", self.yellow))
+                        print(f"\n❌{self.yellow}  Oops! {self.voltage_forward}V is greater than {self.voltage_supply}V."
+                              f"\n🔄 Try again with a 5V supply instead.{self.reset}\n")
 
                     elif self.voltage_forward == self.voltage_supply:
-                        print(colored(f"\n❌  Oops! {self.voltage_forward}V is equal to {self.voltage_supply}V."
-                              f"\n🔄 Try again with a 5V supply instead.\n", self.yellow))
+                        print(f"\n❌ {self.yellow} Oops! {self.voltage_forward}V is equal to {self.voltage_supply}V."
+                              f"\n🔄 Try again with a 5V supply instead.{self.reset}\n")
                         continue  # Ask for input again
 
                     else:
@@ -238,11 +239,11 @@ class Quiz:
                     break
 
                 else:
-                    print(colored("\n⚠️ Invalid choice! Please enter either 3V or 5V.\n", self.yellow))
+                    print(f"\n⚠️ {self.yellow}Invalid choice! Please enter either 3V or 5V.{self.reset}\n")
                     # self.pause_quick()
 
             except ValueError:
-                print(colored("\n⚠️ Invalid input. Please enter a valid number (3 or 5).\n", self.yellow))
+                print(f"\n⚠️{self.yellow} Invalid input. Please enter a valid number (3 or 5).{self.reset}\n")
                 # self.pause_quick()
         self.clear()
 
@@ -267,11 +268,11 @@ class Quiz:
                     break
 
                 else:
-                    print(colored("⚠️ Invalid input. Please enter a valid number for a resistor.", self.yellow))
+                    print(f"⚠️ {self.yellow}Invalid input. Please enter a valid number for a resistor.{self.reset}")
                 # Valid input, exit loop
 
             except ValueError:
-                print(colored("\n⚠️ That doesn't seem like a valid number!\n", self.yellow))
+                print(f"\n⚠️{self.yellow} That doesn't seem like a valid number!{self.reset}\n")
                 # self.pause_quick()
 
 
@@ -290,13 +291,11 @@ class Quiz:
 
         if self.resistance_guess == self.resistance_calculate:
             self.score += 1
-            print(colored(
-                  f"✅ Correct! The resistance for question {self.question} is {self.resistance_calculate} Ω.",
-                  f"{self.green}"))
+            print(f"✅ {self.green}Correct! The resistance for question {self.question} is {self.resistance_calculate}"
+                  f" Ω.{self.reset}")
         else:
-            print(colored(
-                f"❌ Incorrect! The correct resistance for question {self.question} is {self.resistance_calculate} Ω.",
-                f"{self.red}"))
+            print(f"❌ {self.red}Incorrect! The correct resistance for question {self.question} is "
+                f"{self.resistance_calculate} Ω.{self.reset}")
 
         print(f"\n📈 You have answered {self.score} out of {self.question} questions correctly so far.")
         print("=" * 50 + "\n")
@@ -314,18 +313,18 @@ class Quiz:
 
     def grade_boundaries(self):
         if self.score < (self.question / 2):
-            self.grade = colored("Not Achieved", self.red)
+            self.grade = f"{self.red} Not Achieved {self.reset}"
         else:
             if (self.question / 2) <= self.score < (self.question / 1.5):
-                self.grade = colored("Achieved", self.yellow)
+                self.grade = f"{self.yellow} Achieved {self.reset}"
 
             else:
                 if (self.question / 1.5) <= self.score < (self.question / 1.1):
-                    self.grade = colored("Merit", self.green)
+                    self.grade = f"{self.green} Merit {self.reset}"
 
                 else:
                     if (self.question / 1.1) <= self.score == self.question :
-                        self.grade = colored("Excellence", self.green)
+                        self.grade = f"{self.green} Excellence {self.reset}"
 
                     else:
                         pass
