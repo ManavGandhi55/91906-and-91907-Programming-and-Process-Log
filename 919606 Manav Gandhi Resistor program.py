@@ -1,7 +1,8 @@
 """Resistor quiz program, using the formula (Vs-Vf)/If, program made for year 10/11 students """
 import os # imports the os module for Python
 import time # imports the time module for Python
-import random # imports random module for Pythonni
+import random # imports random module for Pythonn
+from termcolor import colored # imports colored module for python
 
 
 class LED:
@@ -27,7 +28,7 @@ class Quiz:
         self.current = 0 # Forward Current mA
         self.current_amps = 0
         self.voltage_supply = 0 # Supply voltage
-        self.resistance_guess = 0 # the R value they guess
+        self.resistance_guess = 0  # the R value they guess
         self.resistance_calculate = 0 # the R value the code guesses
         self.question = 0
         self.score = 0
@@ -36,6 +37,10 @@ class Quiz:
         self.led_data = led_data # data
         self.vs3_list = ['3','3.0']
         self.vs5_list = ['5','5.0']
+        self.green = "green"
+        self.yellow = "yellow"
+        self.red = "red"
+
 
 
     def clear(self):
@@ -50,6 +55,7 @@ class Quiz:
     # def pause_slow(self):
         # time.sleep(6)
 
+
     def intro(self):
         # Introduction displayed to the user
         print("\n" + "=" * 50)
@@ -59,6 +65,12 @@ class Quiz:
         print("\n📢 This program will test your ability to calculate")
         print("the recommended resistor for various LEDs in a series circuit.\n")
 
+        # Briefly show the equation
+        print("💡 Resistor Formula: R = (V_supply - V_forward) / I_forward")
+        print("   - V_supply = Voltage from the power source")
+        print("   - V_forwardD = Voltage drop across the LED")
+        print("   - I_forward = Desired current for the LED\n")
+
         # Ask if the user wants guidelines
         text = input("📝 Would you like some guidelines before starting? (Yes/No): ").strip().lower()
 
@@ -67,23 +79,26 @@ class Quiz:
             self.guidelines()
         elif text == "no":
             print("\n🎯 Alright! Let's jump straight into the quiz!\n")
-            # self.pause_quick()
             self.clear()
             self.loop()
         else:
             print("\n🤔 It seems like you're unsure... No worries!")
             print("We'll go ahead and start the quiz anyway. 🚀\n")
-            # self.pause_quick()
             self.clear()
             self.loop()
-
 
     def guidelines(self):
         # Provides guidelines to the user on how the quiz works
         index = 0
         self.clear()
         self.select_led(index)
-        self.voltage_input()
+
+        self.voltage_supply = 3
+        if self.voltage_forward >= self.voltage_supply:
+            self.voltage_supply = 5
+        else:
+            pass
+
         self.calculate_resistance()
 
         print("\n" + "=" * 50)
@@ -118,13 +133,12 @@ class Quiz:
         print(f"   1️⃣ Convert current: {self.current}mA ÷ 1000 = {self.current_amps}A")
         print(f"   2️⃣ Substitute values into the formula:")
         print(f"      Resistance = ({self.voltage_supply} - {self.voltage_forward}) ÷ {self.current_amps}")
-        print(f"      Resistance = {self.resistance_calculate}Ω")
+        print(f"      Resistance = {self.resistance_calculate} Ω")
 
         # self.pause_slow()
 
-        print("\n📌 Final Resistance Value:")
-        print(f"   🔹 Rounded to 1 decimal place: {self.resistance_calculate}Ω")
-        print("   🔹 If it’s a whole number, no decimal point is needed.")
+        print(f"\n📌 Final Resistance Value: {self.resistance_calculate} Ω")
+
 
         # self.pause_slow()
 
@@ -157,12 +171,12 @@ class Quiz:
         print("\n📌 Step 3: Apply the Formula")
         print("   Resistance = (Vs - Vf) ÷ If")
         print(f"   ({self.voltage_supply} - {self.voltage_forward}) ÷ {self.current_amps} = "
-              f"{self.resistance_calculate}Ω")
+              f"{self.resistance_calculate} Ω")
 
         # self.pause_medium()
 
         print("\n🎯 Final Answer:")
-        print(f"   ✅ The calculated resistance is {self.resistance_calculate}Ω")
+        print(f"   ✅ The calculated resistance is {self.resistance_calculate} Ω")
 
         # self.pause_slow()
 
@@ -184,10 +198,12 @@ class Quiz:
         print("\n" + "=" * 50)
         print("💡 LED Specifications 💡")
         print("=" * 50)
+
+
         print(f"🔋 Forward Voltage: {self.voltage_forward}V"
               f"\n ⚡ Forward Current: {self.current}mA")
         print("=" * 50 + "\n")
-
+        print(f'Resistance Calculated: {self.resistance_calculate} Ω')
 
 
         while True:
@@ -201,12 +217,12 @@ class Quiz:
                 if guess in valid_3:
                     self.voltage_supply = 3
                     if self.voltage_forward > self.voltage_supply:
-                        print(f"\n❌  Oops! {self.voltage_forward}V is greater than {self.voltage_supply}V."
-                              f"\n🔄 Try again with a 5V supply instead.\n")
+                        print(colored(f"\n❌  Oops! {self.voltage_forward}V is greater than {self.voltage_supply}V."
+                              f"\n🔄 Try again with a 5V supply instead.\n", self.yellow))
 
                     elif self.voltage_forward == self.voltage_supply:
-                        print(f"\n❌  Oops! {self.voltage_forward}V is equal to {self.voltage_supply}V."
-                              f"\n🔄 Try again with a 5V supply instead.\n")
+                        print(colored(f"\n❌  Oops! {self.voltage_forward}V is equal to {self.voltage_supply}V."
+                              f"\n🔄 Try again with a 5V supply instead.\n", self.yellow))
                         continue  # Ask for input again
 
                     else:
@@ -222,11 +238,11 @@ class Quiz:
                     break
 
                 else:
-                    print("\n⚠️ Invalid choice! Please enter either 3V or 5V.\n")
+                    print(colored("\n⚠️ Invalid choice! Please enter either 3V or 5V.\n", self.yellow))
                     # self.pause_quick()
 
             except ValueError:
-                print("\n⚠️ Invalid input. Please enter a valid number (3 or 5).\n")
+                print(colored("\n⚠️ Invalid input. Please enter a valid number (3 or 5).\n", self.yellow))
                 # self.pause_quick()
         self.clear()
 
@@ -240,24 +256,22 @@ class Quiz:
               f"\n🔌 Forward Current: {self.current}mA")
         print("=" * 50 + "\n")
         # self.pause_quick()
-        positive_integers = 0
+
 
         while True:
             try:
                 # Asking user for their resistance guess
-                self.resistance_guess = input("📝 Enter the resistance (rounded to 1 decimal place): ").strip()
-
+                self.resistance_guess = int(input("📝 Enter the resistance: "))
                 # Ensuring the number is rounded correctly
-                if self.resistance_calculate > positive_integers:
+                if self.resistance_guess > 0:
                     break
+
                 else:
-                    print("⚠️ Invalid input. Please enter a valid number for a resistor.")
+                    print(colored("⚠️ Invalid input. Please enter a valid number for a resistor.", self.yellow))
                 # Valid input, exit loop
 
             except ValueError:
-                print(
-                    "\n⚠️ That doesn't seem like a valid number! Please enter a numerical value rounded to "
-                    "one decimal place.\n")
+                print(colored("\n⚠️ That doesn't seem like a valid number!\n", self.yellow))
                 # self.pause_quick()
 
 
@@ -265,7 +279,7 @@ class Quiz:
         # Calculates resistance of the given question
         self.current_amps = self.current / 1000 # Calculates the current in amps, not milliamps
         self.resistance_calculate = round((self.voltage_supply - self.voltage_forward) / self.current_amps)
-        print(f'Resistance Calculated: {self.resistance_calculate}Ω')
+        print(f'Resistance Calculated: {self.resistance_calculate} Ω')
 
 
     def output(self):
@@ -276,10 +290,13 @@ class Quiz:
 
         if self.resistance_guess == self.resistance_calculate:
             self.score += 1
-            print(f"✅ Correct! The resistance for question {self.question} is {self.resistance_calculate}Ω.")
+            print(colored(
+                  f"✅ Correct! The resistance for question {self.question} is {self.resistance_calculate} Ω.",
+                  f"{self.green}"))
         else:
-            print(
-                f"❌ Incorrect! The correct resistance for question {self.question} is {self.resistance_calculate}Ω.")
+            print(colored(
+                f"❌ Incorrect! The correct resistance for question {self.question} is {self.resistance_calculate} Ω.",
+                f"{self.red}"))
 
         print(f"\n📈 You have answered {self.score} out of {self.question} questions correctly so far.")
         print("=" * 50 + "\n")
@@ -297,18 +314,18 @@ class Quiz:
 
     def grade_boundaries(self):
         if self.score < (self.question / 2):
-            self.grade = "Not Achieved"
+            self.grade = colored("Not Achieved", self.red)
         else:
             if (self.question / 2) <= self.score < (self.question / 1.5):
-                self.grade = "Achieved"
+                self.grade = colored("Achieved", self.yellow)
 
             else:
                 if (self.question / 1.5) <= self.score < (self.question / 1.1):
-                    self.grade = "Merit"
+                    self.grade = colored("Merit", self.green)
 
                 else:
                     if (self.question / 1.1) <= self.score == self.question :
-                        self.grade = "Excellence"
+                        self.grade = colored("Excellence", self.green)
 
                     else:
                         pass

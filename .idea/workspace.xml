@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52db5584-bcfa-4e2b-a92a-41b547cfc030" name="Changes" comment="commit 21 - Trialled new outputs, with emojis, makes program look far nicer" />
+    <list default="true" id="52db5584-bcfa-4e2b-a92a-41b547cfc030" name="Changes" comment="commit 22 - commit 22 got rid of floats for resistance, and changed all 30mA to 20mA">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/919606 Manav Gandhi Resistor program.py" beforeDir="false" afterPath="$PROJECT_DIR$/919606 Manav Gandhi Resistor program.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -275,7 +278,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743636410029</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="commit 22 - commit 22 got rid of floats for resistance, and changed all 30mA to 20mA">
+      <option name="closed" value="true" />
+      <created>1743729860982</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1743729860982</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -309,6 +320,7 @@
     <MESSAGE value="commit 19 accepts 3.0 or 5.0 for Vs, aswell as adding the V symbol in the function, so 3 3.0 or 3V or 3.0V." />
     <MESSAGE value="commit 20 - provides the user with what grade they got." />
     <MESSAGE value="commit 21 - Trialled new outputs, with emojis, makes program look far nicer" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit 21 - Trialled new outputs, with emojis, makes program look far nicer" />
+    <MESSAGE value="commit 22 - commit 22 got rid of floats for resistance, and changed all 30mA to 20mA" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 22 - commit 22 got rid of floats for resistance, and changed all 30mA to 20mA" />
   </component>
 </project>
