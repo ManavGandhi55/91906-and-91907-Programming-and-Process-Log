@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52db5584-bcfa-4e2b-a92a-41b547cfc030" name="Changes" comment="commit 20 - provides the user with what grade they got.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/919606 Manav Gandhi Resistor program.py" beforeDir="false" afterPath="$PROJECT_DIR$/919606 Manav Gandhi Resistor program.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data.txt" afterDir="false" />
-    </list>
+    <list default="true" id="52db5584-bcfa-4e2b-a92a-41b547cfc030" name="Changes" comment="commit 21 - Trialled new outputs, with emojis, makes program look far nicer" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -271,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743467749425</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="commit 21 - Trialled new outputs, with emojis, makes program look far nicer">
+      <option name="closed" value="true" />
+      <created>1743636410025</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1743636410029</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -304,6 +308,7 @@
     <MESSAGE value="commit 18 Random shuffle/Deleting led from list after use/fixing bug when Vf&gt;Vs" />
     <MESSAGE value="commit 19 accepts 3.0 or 5.0 for Vs, aswell as adding the V symbol in the function, so 3 3.0 or 3V or 3.0V." />
     <MESSAGE value="commit 20 - provides the user with what grade they got." />
-    <option name="LAST_COMMIT_MESSAGE" value="commit 20 - provides the user with what grade they got." />
+    <MESSAGE value="commit 21 - Trialled new outputs, with emojis, makes program look far nicer" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 21 - Trialled new outputs, with emojis, makes program look far nicer" />
   </component>
 </project>
