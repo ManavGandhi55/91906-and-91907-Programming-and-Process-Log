@@ -10,9 +10,7 @@ class LED:
     """LED Class, loads, formats, and shuffles all the LED data."""
 
     def __init__(self, filename):
-        """Initialize the LED object by loading data from a
-        file and shuffling the list.
-        """
+        """Initialize the LED object by loading data from a file and shuffling the list."""  # noqa
         self.led_list = self.load_led_data(filename)
         random.shuffle(self.led_list)
         # print(f'{self.led_list}')  # Debug: Prints the LED list for testing.
@@ -67,20 +65,19 @@ class Quiz:
         os.system('cls' if os.name == 'nt' else 'clear')
 
     # Provides a delay between outputs (quick)
-    # def pause_quick(self):
-    # time.sleep(2)
+    def pause_quick(self):
+        time.sleep(2)
 
     # Provides a delay between outputs (medium)
-    # def pause_medium(self):
-    # time.sleep(4)
+    def pause_medium(self):
+        time.sleep(4)
 
     # Provides a delay between outputs (slow)
-    # def pause_slow(self):
-    # time.sleep(6)
+    def pause_slow(self):
+        time.sleep(6)
 
     def intro(self):
-        """Introduction to the program, Welcome message,
-        Brief explanation, and an input for guidelines."""
+        """Introduction to the program, Welcome message, Brief explanation, and an input for guidelines."""  # noqa
         print("\n" + "=" * 50)
         print("  🔥 Welcome to Manav's Resistor Quiz Program! 🔥")
         print("=" * 50)
@@ -141,13 +138,13 @@ class Quiz:
         print(f"   💡 Forward Voltage: {self.voltage_forward}V")
         print(f"   🔌 Forward Current: {self.current}mA\n")
 
-        # self.pause_medium()
+        self.pause_medium()
         # Reason for the quiz.
         print(
             "📌 These values are used to find the recommended resistor in a series circuit (e.g., for a JackBord).")  # noqa
-        print("💡 The formula required is Ohm’s Law, allowing us to calculate resistance.")  # noqa
+        print("💡 The formula required is Ohm's Law, allowing us to calculate resistance.")  # noqa
 
-        # self.pause_quick()
+        self.pause_quick()
 
         # Provides user with a tip on converting amps to milliamps.
         print("\n✨ Quick Tip:")
@@ -155,12 +152,12 @@ class Quiz:
               "milliamps (mA).")
         print("   🔹 To convert mA to A, divide by 1000.")
 
-        # self.pause_medium()
+        self.pause_medium()
 
         print("\n📐 Formula Required to Find Resistance:")
         print("   Resistance = (Vs - Vf) ÷ (If ÷ 1000)")
 
-        # self.pause_medium()
+        self.pause_medium()
 
         # Shows how to calculate the resistance
         print("\n📊 Step-by-Step Calculation:")
@@ -169,12 +166,12 @@ class Quiz:
         print(f"      Resistance = ({self.voltage_supply} - {self.voltage_forward}) ÷ {self.current_amps}")  # noqa
         print(f"      Resistance = {self.resistance_calculate} Ω")
 
-        # self.pause_slow()
+        self.pause_slow()
 
         # Final value
         print(f"\n📌 Final Resistance Value: {self.resistance_calculate} Ω")
 
-        # self.pause_slow()
+        self.pause_slow()
 
         # Waits for the input then clears the screen and proceeding.
         input("\n🎯 Press Enter to continue...")
@@ -198,14 +195,14 @@ class Quiz:
         print(f"   Forward Voltage (Vf): {self.voltage_forward}V")
         print(f"   Forward Current (If): {self.current}mA")
 
-        # self.pause_slow()
+        self.pause_slow()
 
         # Shows how to convert from milliamps to amps.
         print("\n📌 Step 2: Convert Forward Current to Amps")
         print("   Since current is given in milliamps, we convert it to amps by dividing by 1000.")  # noqa
         print(f"   {self.current}mA ÷ 1000 = {self.current_amps}A")
 
-        # self.pause_medium()
+        self.pause_medium()
 
         # Utilizes the equation for calculating resistance
         print("\n📌 Step 3: Apply the Formula")
@@ -213,13 +210,13 @@ class Quiz:
         print(f"   ({self.voltage_supply} - {self.voltage_forward}) ÷ {self.current_amps} = "  # noqa
               f"{self.resistance_calculate} Ω")
 
-        # self.pause_medium()
+        self.pause_medium()
 
         # Provides the Final answer.
         print("\n🎯 Final Answer:")
         print(f"   The calculated resistance is {self.resistance_calculate} Ω")
 
-        # self.pause_slow()
+        self.pause_slow()
 
         # Waits for the input then clears the screen and proceeding.
         input("\n🔄 Press Enter to continue...")
@@ -244,7 +241,7 @@ class Quiz:
         print(f"🔋 Forward Voltage: {self.voltage_forward}V"
               f"\n ⚡ Forward Current: {self.current}mA")
         print("=" * 50 + "\n")
-        print(f'Resistance Calculated: {self.resistance_calculate} Ω')
+        # print(f'Resistance Calculated: {self.resistance_calculate} Ω')  # Debug: Correct answer
 
         # Loops until a valid Vs is entered.
         while True:
@@ -275,26 +272,26 @@ class Quiz:
 
                     else:
                         print("\n✅ 3V selected. Let's continue.\n")
-                        # self.pause_quick()
+                        self.pause_quick()
                         break
 
                 elif guess in valid_5:
                     self.voltage_supply = 5
                     print("\n✅ 5V selected. Let's continue.\n")
-                    # self.pause_quick()
+                    self.pause_quick()
                     break
 
                 else:
                     print(
                         f"\n⚠️ {self.yellow}Invalid choice! Please enter either 3V or 5V.{self.reset}\n"  # noqa
                     )
-                    # self.pause_quick()
+                    self.pause_quick()
 
             except ValueError:
                 print(
                     f"\n⚠️{self.yellow} Invalid input. Please enter a valid number (3 or 5).{self.reset}\n"  # noqa
                 )
-                # self.pause_quick()
+                self.pause_quick()
         self.clear()
 
     def resistance(self):
@@ -308,7 +305,7 @@ class Quiz:
               f"\n ⚡ Forward Voltage: {self.voltage_forward}V"
               f"\n🔌 Forward Current: {self.current}mA")
         print("=" * 50 + "\n")
-        # self.pause_quick()
+        self.pause_quick()
 
         # Loops until a valid resistance guess is entered.
         while True:
@@ -321,15 +318,14 @@ class Quiz:
 
                 else:
                     print(
-                        f"⚠️ {self.yellow}Invalid input. Please enter a valid number for a resistor.{self.reset}"
-                        # noqa
+                        f"⚠️ {self.yellow}Invalid input. Please enter a valid number for a resistor.{self.reset}"  # noqa
                     )
 
             except ValueError:
                 print(
                     f"\n⚠️{self.yellow} That doesn't seem like a valid number!{self.reset}\n"  # noqa
                 )
-                # self.pause_quick()
+                self.pause_quick()
 
     def calculate_resistance(self):
         """Calculates the resistance of the given question."""
@@ -339,7 +335,6 @@ class Quiz:
         self.resistance_calculate = round(
             (self.voltage_supply - self.voltage_forward) / self.current_amps
         )
-        print(f'Resistance Calculated: {self.resistance_calculate} Ω')
 
     def output(self):
         """Provides feedback based on the user's answer."""
@@ -367,7 +362,7 @@ class Quiz:
         print(f"\n📈 You have answered {self.score} out of {self.question} questions correctly so far.")  # noqa
         print("=" * 50 + "\n")
 
-        # self.pause_medium()
+        self.pause_medium()
 
         # Prompts the user for help, regardless of their answer.
         self.help = input(
@@ -418,7 +413,7 @@ class Quiz:
         for index in range(len(self.led_data)):
             self.select_led(index)  # Sets the current LED parameters.
             self.question += 1  # Increments the question count.
-            self.voltage_input()  # Displays LED specs and request supply voltage.
+            self.voltage_input()  # Displays LED specs and request supply voltage.  # noqa
             self.calculate_resistance()  # Calculates the correct resistance.
             self.resistance()  # Gathers user resistance input.
             self.output()  # Provides feedback to user, updates score.

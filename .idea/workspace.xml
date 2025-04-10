@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52db5584-bcfa-4e2b-a92a-41b547cfc030" name="Changes" comment="commit 25 - PEP 8 sort of followed">
+    <list default="true" id="52db5584-bcfa-4e2b-a92a-41b547cfc030" name="Changes" comment="commit 25 - Comments done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/919606 Manav Gandhi Resistor program.py" beforeDir="false" afterPath="$PROJECT_DIR$/919606 Manav Gandhi Resistor program.py" afterDir="false" />
     </list>
@@ -310,7 +310,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743977373612</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="commit 25 - Comments done">
+      <option name="closed" value="true" />
+      <created>1743980660251</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1743980660251</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -348,6 +356,7 @@
     <MESSAGE value="commit 23 - termcolour + guidelines automatically does the voltage supply" />
     <MESSAGE value="commit 24 - python colour vs term colour, kept python colour as it works better on school pc's" />
     <MESSAGE value="commit 25 - PEP 8 sort of followed" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit 25 - PEP 8 sort of followed" />
+    <MESSAGE value="commit 25 - Comments done" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 25 - Comments done" />
   </component>
 </project>
